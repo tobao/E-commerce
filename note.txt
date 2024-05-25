@@ -1,0 +1,361 @@
+(*)Bạn sử dụng display, flex-direction, justify-content, và align-items khi muốn kiểm soát cách các phần tử con được bố trí bên trong một phần tử cha.
+
+1. display:
+display: flex;: Sử dụng khi bạn muốn biến một phần tử thành flex container. Lúc này, bạn có thể kiểm soát vị trí, thứ tự và kích thước của các phần tử con bên trong nó một cách linh hoạt.
+Ngoài flex, display còn có nhiều giá trị khác như: block, inline, inline-block, none,... Mỗi giá trị sẽ quyết định cách phần tử hiển thị trên trang web.
+
+(+)block:
+	Đặc điểm:
+		Chiếm toàn bộ chiều rộng của phần tử cha.
+		Xuống dòng mới so với các phần tử trước và sau nó.
+		Có thể set chiều rộng, chiều cao, lề (margin) và phần đệm (padding).
+		Ví dụ: <div>, <p>, <h1-h6>, <form>, <header>, <footer>, <nav>...
+		Khi nào sử dụng: Khi bạn muốn một phần tử chiếm toàn bộ chiều rộng và xuống dòng mới, tạo thành khối riêng biệt trên trang web.
+(+)inline:
+	Đặc điểm:
+		Chỉ chiếm chiều rộng vừa đủ để chứa nội dung.
+		Không xuống dòng mới, nằm cùng dòng với các phần tử khác.
+		Không thể set chiều rộng, chiều cao, chỉ có thể set lề trái/phải và phần đệm trái/phải.
+		Ví dụ: <span>, <a>, <img>, <input>, <button>, <strong>, <em>...
+		Khi nào sử dụng: Khi bạn muốn chèn một phần tử nhỏ vào giữa dòng văn bản hoặc nhóm các phần tử nhỏ lại với nhau mà không làm ảnh hưởng đến dòng chảy của văn bản.
+(+)inline-block:
+	Đặc điểm:
+		Kết hợp cả đặc điểm của inline và block.
+		Nằm cùng dòng với các phần tử khác.
+		Có thể set chiều rộng, chiều cao, lề (margin) và phần đệm (padding).
+		Ví dụ: <button>, <input>, <img> (khi cần set margin/padding) ...
+		Khi nào sử dụng: Khi bạn muốn một phần tử vừa nằm cùng dòng với các phần tử khác, vừa có thể tùy chỉnh kích thước và khoảng cách.
+(+)none:
+	Đặc điểm:
+		Ẩn phần tử khỏi màn hình.
+		Không chiếm diện tích trên trang web.
+		Ví dụ: Sử dụng JavaScript để ẩn/hiện phần tử.
+		Khi nào sử dụng: Khi bạn muốn ẩn một phần tử khỏi người dùng, có thể là tạm thời hoặc vĩnh viễn.
+(+)flex:
+	Đặc điểm:
+		Biến phần tử thành flex container, cho phép sắp xếp các phần tử con một cách linh hoạt.
+		Ví dụ: <div>, <header>, <nav>, <footer>...
+		Khi nào sử dụng: Khi bạn muốn tạo bố cục phức tạp với khả năng kiểm soát vị trí, thứ tự và kích thước của các phần tử con.
+(+)grid:
+	Đặc điểm:
+		Biến phần tử thành grid container, cho phép sắp xếp các phần tử con theo dạng lưới.
+		Ví dụ: <div>, <header>, <main>, <footer>...
+		Khi nào sử dụng: Khi bạn muốn tạo bố cục phức tạp theo dạng lưới, với khả năng kiểm soát vị trí và kích thước của các phần tử con một cách chính xác.
+
+2. flex-direction:
+Sử dụng sau khi đã set display: flex; để xác định hướng sắp xếp các phần tử con trong flex container:
+	row: Sắp xếp các phần tử con thành một hàng (mặc định).
+	row-reverse: Sắp xếp các phần tử con thành một hàng nhưng theo thứ tự ngược lại.
+	column: Sắp xếp các phần tử con thành một cột.
+	column-reverse: Sắp xếp các phần tử con thành một cột nhưng theo thứ tự ngược lại.
+
+3. justify-content:
+Sử dụng sau khi đã set display: flex; để xác định cách căn chỉnh các phần tử con theo trục chính của flex container:
+	flex-start: Căn chỉnh các phần tử con về đầu trục chính.
+	flex-end: Căn chỉnh các phần tử con về cuối trục chính.
+	center: Căn giữa các phần tử con trên trục chính.
+	space-between: Phân bố đều các phần tử con trên trục chính, với khoảng cách bằng nhau giữa chúng.
+	space-around: Phân bố đều các phần tử con trên trục chính, với khoảng cách bằng nhau xung quanh mỗi phần tử con.
+	space-evenly: Phân bố đều các phần tử con trên trục chính, với khoảng cách bằng nhau giữa các phần tử con và khoảng cách bằng nhau từ phần tử đầu tiên và cuối cùng đến cạnh của flex container.
+
+4. align-items:
+Sử dụng sau khi đã set display: flex; để xác định cách căn chỉnh các phần tử con theo trục chéo của flex container:
+	flex-start: Căn chỉnh các phần tử con về đầu trục chéo.
+	flex-end: Căn chỉnh các phần tử con về cuối trục chéo.
+	center: Căn giữa các phần tử con trên trục chéo.
+	baseline: Căn chỉnh các phần tử con theo đường cơ sở của chúng.
+	stretch: Kéo giãn các phần tử con để lấp đầy toàn bộ chiều cao của flex container (mặc định).
+
+Tóm lại:
+Bạn cần display: flex; để tạo ra flex container.
+	flex-direction quyết định hướng sắp xếp (row hoặc column).
+	justify-content căn chỉnh theo trục chính và align-items căn chỉnh theo trục chéo của flex container.
+Flexbox là một công cụ mạnh mẽ để bố trí layout trong CSS. Hi vọng những thông tin trên giúp bạn hiểu rõ hơn về cách sử dụng display, flex-direction, justify-content và align-items.
+==>Lưu ý: Nếu không set  display: flex; hoặc display: inline-flex; thì không thể set flex-direction, justify-content, align-items. Chúng sẽ trở nên vô nghĩa!
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+(*)Đảm bảo tính responsive cho layout khi sử dụng flexbox
+
+1.Sử dụng Media Queries:
+Đây là phương pháp phổ biến nhất để tạo layout responsive.
+Bạn có thể thay đổi giá trị của flex-direction, justify-content, và các thuộc tính flexbox khác dựa trên kích thước màn hình.
+Ví dụ:
+/* Mặc định: bố cục nằm ngang */
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Trên thiết bị nhỏ hơn 768px: bố cục chuyển sang dọc */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+2.flex-wrap: wrap;:
+Thuộc tính này cho phép các phần tử con "gãy" xuống dòng mới khi không gian không đủ.
+Rất hữu ích khi bạn muốn các phần tử tự động điều chỉnh theo kích thước màn hình.
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+3.flex-basis, flex-grow, flex-shrink:
+Sử dụng linh hoạt các thuộc tính này để kiểm soát kích thước và tỷ lệ của các phần tử con.
+Ví dụ: flex: 1 1 0; cho phép phần tử con co giãn linh hoạt theo không gian có sẵn.
+
+4. Đơn vị tương đối:
+Sử dụng các đơn vị tương đối như phần trăm (%) hoặc vw (viewport width) để xác định kích thước của flex container và phần tử con.
+Giúp bố cục tự động điều chỉnh theo kích thước màn hình.
+
+5. Thử nghiệm trên nhiều thiết bị:
+Luôn kiểm tra bố cục của bạn trên nhiều thiết bị (máy tính, máy tính bảng, điện thoại) với các kích thước màn hình khác nhau.
+Sử dụng công cụ "Responsive Design Mode" trong trình duyệt để mô phỏng các thiết bị khác nhau.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+(*)Ngoài flex-direction, justify-content và align-items, còn rất nhiều thuộc tính CSS khác bị phụ thuộc bởi display.
+Dưới đây là một số ví dụ:
+1. Các thuộc tính chỉ hoạt động với display: block hoặc display: inline-block:
+	width, height: Quy định chiều rộng và chiều cao của phần tử.
+	margin: Quy định khoảng cách bên ngoài phần tử.
+	padding: Quy định khoảng cách bên trong phần tử.
+	text-align: Quy định cách căn lề văn bản.
+	vertical-align: Quy định cách căn chỉnh phần tử theo chiều dọc.
+
+2. Các thuộc tính chỉ hoạt động với display: table:
+	table-layout: Quy định cách trình duyệt tính toán kích thước của bảng.
+	border-collapse: Quy định cách đường viền của các ô trong bảng được hiển thị.
+	caption-side: Quy định vị trí của chú thích bảng.
+
+3. Các thuộc tính chỉ hoạt động với display: list-item:
+	list-style-type: Quy định kiểu của dấu đầu dòng.
+	list-style-position: Quy định vị trí của dấu đầu dòng.
+	list-style-image: Quy định hình ảnh của dấu đầu dòng.
+
+4. Các thuộc tính chỉ hoạt động với display: grid:
+	grid-template-columns: Xác định số lượng và kích thước của các cột trong grid container.
+	grid-template-rows: Xác định số lượng và kích thước của các hàng trong grid container.
+	grid-gap: Xác định khoảng cách giữa các hàng và cột trong grid container.
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+(*)flex: 1; là cách viết tắt của thuộc tính flex trong flexbox. Nó là một shorthand, gộp 3 thuộc tính con là:
+	flex-grow: 1;: Cho phép phần tử mở rộng để lấp đầy không gian trống còn lại trong flex container. Giá trị 1 nghĩa là phần tử này sẽ mở rộng nhiều hơn các phần tử khác có flex-grow nhỏ hơn.
+	flex-shrink: 1;: Cho phép phần tử thu nhỏ lại khi không gian trong flex container bị giới hạn. Giá trị 1 nghĩa là phần tử này sẽ thu nhỏ tương đương với các phần tử khác có flex-shrink bằng 1.
+	flex-basis: 0;: Xác định kích thước ban đầu của phần tử trước khi nó được mở rộng hoặc thu nhỏ. Giá trị 0 nghĩa là phần tử sẽ không có kích thước ban đầu.
+
+flex: 1; chỉ có tác dụng khi phần tử cha được set display: flex; hoặc display: inline-flex;. Nói cách khác, phần tử cha phải là một flex container thì flex: 1; mới có ý nghĩa.
+
+Ví dụ:
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item" style="flex: 1;">Item 3</div>
+</div>
+
+
+.container {
+  display: flex;
+}
+
+Trong ví dụ này:
+Item 1 và Item 2 sẽ chiếm kích thước vừa đủ để chứa nội dung của chúng.
+Item 3 với flex: 1; sẽ mở rộng để lấp đầy toàn bộ không gian trống còn lại trong .container.
+
+Tóm lại: flex: 1; là một cách viết tắt tiện lợi để tạo ra các phần tử flexbox có khả năng mở rộng và thu nhỏ linh hoạt, giúp bạn kiểm soát bố cục trang web một cách hiệu quả.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Hoàn toàn có thể sử dụng flex: 2;, flex: 3; hoặc bất kỳ giá trị số nguyên dương nào cho thuộc tính flex.
+
+Hãy nhớ rằng flex: 1; là cách viết gọn của flex-grow: 1; flex-shrink: 1; flex-basis: 0;.
+Khi bạn sử dụng flex: 2;, flex: 3;,... bạn đang tác động chủ yếu vào flex-grow, quyết định tỷ lệ mở rộng của phần tử so với các phần tử khác trong cùng flex container.
+Ví dụ:
+flex: 1;: Phần tử sẽ mở rộng với tỷ lệ 1.
+flex: 2;: Phần tử sẽ mở rộng gấp đôi so với phần tử có flex: 1;.
+flex: 3;: Phần tử sẽ mở rộng gấp ba lần so với phần tử có flex: 1;.
+
+Hãy xem xét ví dụ sau:
+<div class="container">
+  <div class="item" style="flex: 1;">Item 1</div>
+  <div class="item" style="flex: 2;">Item 2</div>
+</div>
+
+Trong trường hợp này:
+Item 1 sẽ chiếm 1/3 không gian còn lại trong .container.
+Item 2 sẽ chiếm 2/3 không gian còn lại trong .container, gấp đôi Item 1.
+
+Tóm lại:
+Giá trị của flex (ví dụ: flex: 2;, flex: 3; ...) quyết định tỷ lệ mở rộng của phần tử so với các phần tử khác trong flex container. Nó cho phép bạn tạo ra bố cục linh hoạt và phân chia không gian theo ý muốn.
+
+Trong trường hợp này, cả Item 1 và Item 2 đều có flex: 1;. Điều này có nghĩa là:
+Cả hai phần tử đều có flex-grow: 1;, nghĩa là chúng có khả năng mở rộng bằng nhau để lấp đầy không gian trống trong .container.
+Vì tỷ lệ mở rộng (flex-grow) bằng nhau (đều là 1), nên Item 1 và Item 2 sẽ chia đều không gian trong .container.
+Kết quả:
+Item 1 và Item 2 sẽ có chiều rộng bằng nhau và chiếm 50% không gian của .container.
+
+
+Trong trường hợp Item 1 có flex: 1; và Item 2 có flex: 3;, tỷ lệ mở rộng của chúng là 1:3. Điều này có nghĩa là:
+Item 1 sẽ chiếm 1/4 không gian còn lại trong .container.
+Item 2 sẽ chiếm 3/4 không gian còn lại trong .container.
+Kết quả:
+Item 2 sẽ có chiều rộng gấp ba lần Item 1.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+(*)vh và px là hai đơn vị đo lường khác nhau trong CSS. Chúng ta cùng phân biệt nhé:
+px (pixel): là đơn vị đo lường tuyệt đối, cố định. 1px tương đương với một điểm ảnh trên màn hình. Kích thước của phần tử được thiết lập bằng px sẽ luôn giữ nguyên, bất kể kích thước màn hình hay cửa sổ trình duyệt.
+
+vh (viewport height): là đơn vị đo lường tương đối, dựa trên chiều cao của viewport (cửa sổ trình duyệt). 1vh tương đương với 1% chiều cao của viewport. Kích thước của phần tử được thiết lập bằng vh sẽ thay đổi theo kích thước của viewport.
+
+Ví dụ:
+height: 90vh: Chiều cao của phần tử sẽ bằng 90% chiều cao của viewport. Nếu viewport cao 1000px, phần tử sẽ cao 900px. Nếu viewport cao 500px, phần tử sẽ cao 450px.
+height: 500px: Chiều cao của phần tử sẽ luôn là 500px, bất kể kích thước của viewport.
+
+Nên sử dụng px hay vh?
+	px: Phù hợp với những phần tử có kích thước cố định, không cần thay đổi theo kích thước màn hình. Ví dụ: logo, icon, button.
+	vh: Phù hợp với những phần tử cần thay đổi kích thước theo kích thước màn hình, tạo ra bố cục linh hoạt và responsive. Ví dụ: header, footer, sections.
+Trong trường hợp height: 90vh, phần tử sẽ luôn chiếm 90% chiều cao của viewport, bất kể người dùng đang xem trang web trên màn hình máy tính, máy tính bảng hay điện thoại. Điều này giúp bố cục trang web trở nên linh hoạt và dễ nhìn trên mọi thiết bị.
+==>Tóm lại, việc lựa chọn đơn vị đo lường px hay vh phụ thuộc vào mục đích sử dụng và yêu cầu của bạn.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+(*)gap và padding đều là thuộc tính CSS được sử dụng để tạo khoảng trống, nhưng chúng có những điểm khác biệt quan trọng:
+
+1. gap:
+Áp dụng: gap được sử dụng để tạo khoảng trống giữa các phần tử con trong flexbox (display: flex) và grid layout (display: grid).
+Vị trí: gap tạo khoảng trống bên ngoài phần tử con, nằm giữa các phần tử con.
+Hướng: Bạn có thể sử dụng gap để tạo khoảng cách theo chiều dọc (giữa các hàng) và chiều ngang (giữa các cột) bằng cách sử dụng:
+	gap: Tạo khoảng cách đều nhau cho cả hàng và cột.
+	row-gap: Tạo khoảng cách giữa các hàng.
+	column-gap: Tạo khoảng cách giữa các cột.
+
+2. padding:
+Áp dụng: padding được sử dụng để tạo khoảng trống bên trong một phần tử, giữa nội dung của phần tử và đường viền của nó.
+Vị trí: padding tạo khoảng trống bên trong phần tử, nằm giữa nội dung và đường viền.
+Hướng: Bạn có thể sử dụng padding để tạo khoảng trống cho 4 cạnh của phần tử:
+	padding-top: Khoảng trống phía trên.
+	padding-right: Khoảng trống phía bên phải.
+	padding-bottom: Khoảng trống phía dưới.
+	padding-left: Khoảng trống phía bên trái.
+
+Nên sử dụng gap hay padding?
+Sử dụng gap khi bạn muốn tạo khoảng trống giữa các phần tử con trong flexbox hoặc grid layout.
+Sử dụng padding khi bạn muốn tạo khoảng trống bên trong một phần tử, giữa nội dung và đường viền.
+
+Ví dụ:
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+</div>
+
+
+.container {
+  display: flex;
+  gap: 20px; /* tạo khoảng cách 20px giữa các item */
+}
+
+.item {
+  padding: 10px; /* tạo khoảng trống 10px bên trong mỗi item */
+}
+
+Tóm lại, gap và padding là hai thuộc tính CSS có chức năng tạo khoảng trống, nhưng chúng được áp dụng cho các mục đích khác nhau.
+Việc lựa chọn thuộc tính nào phụ thuộc vào vị trí bạn muốn tạo khoảng trống và ngữ cảnh bố cục.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+(*)background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%); 
+==>tạo ra một hiệu ứng gradient tuyến tính (linear gradient) cho phần tử background. Hãy cùng "mổ xẻ" từng thành phần để hiểu rõ hơn:
+
+1. linear-gradient(): Hàm này dùng để tạo gradient tuyến tính, tức là sự chuyển đổi màu sắc dọc theo một đường thẳng.
+
+2. 180deg: Xác định góc của gradient. 180deg có nghĩa là gradient sẽ chuyển đổi màu từ trên xuống dưới.
+Các giá trị góc khác:
+	0deg: Từ trái sang phải (mặc định)
+	90deg: Từ dưới lên trên
+	270deg: Từ trên xuống dưới
+
+3. #fde1ff: Màu sắc đầu tiên của gradient.
+
+4. #e1ffea22 60%:
+	#e1ffea22: Màu sắc thứ hai của gradient.
+	60%: Vị trí mà màu sắc thứ hai bắt đầu xuất hiện.
+
+Tóm tắt:
+Đoạn mã CSS này tạo ra một background gradient chuyển đổi màu sắc từ #fde1ff (phía trên) sang #e1ffea22 (phía dưới), với màu #e1ffea22 bắt đầu xuất hiện từ vị trí 60% của phần tử.
+
+Lưu ý:
+#e1ffea22 có 22 ở cuối, đây là giá trị alpha (độ trong suốt). 22 tương đương với độ trong suốt khoảng 13%, tức là màu sắc này sẽ hơi trong suốt, cho phép màu sắc hoặc hình ảnh nền phía sau hiển thị qua.
+Bạn có thể thêm nhiều màu sắc hơn vào gradient bằng cách liệt kê chúng trong hàm linear-gradient(), cùng với vị trí tương ứng của chúng.
+------------------------------------------------------------------------------------------------------------------------------------------------
+(*)Ngoài linear-gradient(), CSS còn cung cấp một số hàm khác để tạo hiệu ứng gradient, mỗi hàm tạo ra kiểu gradient khác nhau:
+	(+)radial-gradient(): Tạo gradient hình tròn, màu sắc chuyển đổi từ tâm ra ngoài.
+		background: radial-gradient(circle at 50% 50%, #fde1ff, #e1ffea22);
+	Trong đó:
+		circle: Hình dạng của gradient là hình tròn (có thể thay bằng ellipse cho hình elip).
+		at 50% 50%: Vị trí tâm của gradient là chính giữa phần tử (50% theo chiều ngang và 50% theo chiều dọc).
+		#fde1ff: Màu sắc tại tâm gradient.
+		#e1ffea22: Màu sắc ở rìa ngoài cùng của gradient.
+	(+)conic-gradient(): Tạo gradient hình nón, màu sắc chuyển đổi theo hình vòng cung quanh một điểm trung tâm.
+		background: conic-gradient(from 90deg at 50% 50%, #fde1ff, #e1ffea22);
+	Trong dó:
+		from 90deg: Góc bắt đầu của gradient (90 độ tương đương với 12 giờ trên đồng hồ).
+		at 50% 50%: Vị trí tâm của gradient là chính giữa phần tử.
+		#fde1ff: Màu sắc bắt đầu.
+		#e1ffea22: Màu sắc kết thúc.
+
+Tương tự như linear-gradient(), bạn có thể:
+	Thêm nhiều màu sắc: Liệt kê các màu sắc cùng với vị trí tương ứng của chúng trong hàm.
+	Điều chỉnh vị trí: Thay đổi vị trí tâm, góc bắt đầu, điểm kết thúc...
+	Thêm điểm dừng: Sử dụng phần trăm (%) để xác định điểm dừng của mỗi màu sắc.
+	Thay đổi hình dạng: Trong radial-gradient(), bạn có thể thay đổi từ circle (hình tròn) thành ellipse (hình elip).
+
+Tóm lại:
+CSS cung cấp nhiều hàm gradient khác nhau, cho phép bạn tạo ra những hiệu ứng màu sắc đa dạng và phong phú. Hãy thử nghiệm với các hàm này để tạo ra những thiết kế độc đáo và thu hút!
+------------------------------------------------------------------------------------------------------------------------------------------------------
+transform: scale(1.05);: Thuộc tính transform được sử dụng để áp dụng các hiệu ứng biến đổi (transform) cho phần tử. Hàm scale(1.05) phóng to phần tử lên 105% so với kích thước ban đầu.
+transition: 0.6s;: Thuộc tính transition tạo hiệu ứng chuyển động mượt mà cho quá trình biến đổi. Giá trị 0.6s xác định thời gian chuyển đổi là 0.6 giây.
+
+Mối quan hệ giữa transition và transform:
+	transition không bắt buộc phải đi kèm với transform, nhưng chúng thường được sử dụng cùng nhau để tạo ra hiệu ứng mượt mà và hấp dẫn.
+	transition tạo hiệu ứng chuyển động mượt mà cho bất kỳ thay đổi nào về thuộc tính CSS, bao gồm cả transform.
+Nếu bạn sử dụng transform mà không có transition, phần tử sẽ thay đổi đột ngột, tạo cảm giác "giật" và thiếu chuyên nghiệp.
+
+
+.box:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease; /* thêm transition cho transform */
+}
+
+ease là một giá trị của thuộc tính transition-timing-function. Thuộc tính này xác định tốc độ thay đổi của hiệu ứng transition theo thời gian, tạo ra các hiệu ứng chuyển động khác nhau.
+
+ease là một trong các giá trị định sẵn của transition-timing-function, đại diện cho hiệu ứng chuyển động mượt mà và tự nhiên:
+	Bắt đầu chậm, sau đó tăng tốc, và cuối cùng chậm lại một cách nhẹ nhàng.
+	Đây là giá trị mặc định của transition-timing-function nếu bạn không khai báo cụ thể.
+
+Ngoài ease, bạn có thể sử dụng các giá trị định sẵn khác:
+	linear: Tốc độ thay đổi đều đặn từ đầu đến cuối.
+	ease-in: Bắt đầu chậm, sau đó tăng tốc dần.
+	ease-out: Bắt đầu nhanh, sau đó giảm tốc dần.
+	ease-in-out: Bắt đầu chậm, tăng tốc ở giữa, và cuối cùng chậm lại.
+
+Bạn cũng có thể tự tạo ra hiệu ứng chuyển động riêng bằng cách sử dụng hàm cubic-bezier(x1, y1, x2, y2):
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+------------------------------------------------------------------------------------------------------------------------------------------------------
+box-shadow: 0 1px 3px -2px black; là cách tạo bóng đổ (box shadow) cho một phần tử HTML. Hãy cùng "mổ xẻ" từng thành phần để hiểu rõ hơn:
+
+box-shadow: Thuộc tính CSS để thêm hiệu ứng bóng đổ cho phần tử.
+	0 1px 3px -2px: Xác định các giá trị của bóng đổ:
+	0 (offset-x): Khoảng cách đổ bóng theo chiều ngang (dương là sang phải, âm là sang trái). Trong trường hợp này là 0, nên bóng đổ không bị lệch sang ngang.
+	1px (offset-y): Khoảng cách đổ bóng theo chiều dọc (dương là xuống dưới, âm là lên trên). 1px nghĩa là bóng đổ sẽ đổ xuống dưới 1 pixel.
+	3px (blur-radius): Độ mờ của bóng đổ (giá trị càng lớn, bóng đổ càng mờ).
+	-2px (spread-radius): Độ lan rộng của bóng đổ (dương là bóng đổ rộng hơn, âm là bóng đổ thu hẹp lại).
+	black: Màu sắc của bóng đổ.
+Tóm tắt: Đoạn mã CSS này tạo ra một bóng đổ màu đen, hơi đổ xuống dưới (1px), mờ nhẹ (3px) và hơi thu hẹp lại (-2px).
+
+Sử dụng box-shadow khi nào?
+	Tạo hiệu ứng nổi bật cho phần tử, giúp nó nổi bật khỏi nền.
+	Thêm chiều sâu và sự tinh tế cho thiết kế.
+	Làm cho giao diện trở nên trực quan và hấp dẫn hơn.
+
+Các thuộc tính thường đi kèm với box-shadow:
+	border-radius: Bo tròn góc của phần tử, tạo hiệu ứng bóng đổ mượt mà hơn.
+	background-color: Màu nền của phần tử, ảnh hưởng đến cách bóng đổ hiển thị.
+	opacity: Độ trong suốt của phần tử, có thể ảnh hưởng đến độ đậm nhạt của bóng đổ.
+	transform: Kết hợp với box-shadow để tạo hiệu ứng đổ bóng 3D.
+Lưu ý:
+Bạn có thể thêm nhiều lớp bóng đổ cho một phần tử bằng cách sử dụng dấu phẩy (,) để phân cách các giá trị box-shadow. Ví dụ:
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
