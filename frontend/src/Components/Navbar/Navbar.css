@@ -111,7 +111,7 @@
   }
 }
 
-@media(max-width:1024){
+@media(max-width:1024px){
   .navbar{
     padding: 12px 30px;
   }
