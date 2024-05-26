@@ -52,6 +52,30 @@
   font-size: 16px;
   cursor: pointer;
 }
+@media(min-width:1280px){
+  .newsletter{
+    padding: 0px 80px;
+    margin-bottom: 120px;
+    gap:20px;
+  }
+  .newsletter h1{
+    font-size: 36px;
+  }
+  .newsletter p{
+    font-size: 16px;
+  }
+  .newsletter div{
+    width: 600px;
+    height: 60px;
+  }
+  .newsletter div input{
+    width: 400px;
+  }
+  .newsletter div button{
+    width: 160px;
+    height: 60px;
+  }
+}
 @media(max-width:1280px){
   .newsletter{
     padding: 0px 80px;
