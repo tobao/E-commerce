@@ -8,6 +8,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const { type } = require("os");
+const { error } = require("console");
 
 app.use(express.json());
 app.use(cors());
@@ -78,9 +79,9 @@ const Product = mongoose.model("Product",{
     type:String,
     require:true,
   },
-  categoty:{
-    type:String,
-    require:true,
+  category: {
+    type: String,
+    required: true,
   },
   new_price:{
     type:Number,
@@ -116,7 +117,7 @@ app.post('/addproduct',async (req,res)=>{
     id: id,
     name: req.body.name,
     image: req.body.image,
-    categoty: req.body.categoty,
+    category: req.body.category,
     new_price: req.body.new_price,
     old_price: req.body.old_price,
   })
@@ -146,6 +147,104 @@ app.get('/allproducts',async(req,res)=>{
   res.send(products);
 })
 
+//Shema creating for User Model
+const Users = mongoose.model('Users',{
+  name:{
+    type:String,
+  },
+  email:{
+    type:String,
+    unique:true, //unique để đảm bảo không có hai người dùng có cùng email.
+  },
+  password:{
+    type:String,
+  },
+  cartData:{
+    type:Object,
+  },
+  date:{
+    type:Date,
+    default:Date.now,
+  }
+})
+
+//Create Endpont for registering the user
+app.post('/signup', async(req,res)=>{
+  let check = await Users.findOne({email:req.body.email})
+  if(check){
+    return res.status(400).json({success:false,errors:"Existing user found with same email address"})
+  }
+  let cart = {};
+  for (let i = 0; i < 300; i++) {
+    cart[i]=0;
+  }
+  const user = new Users({
+    name:req.body.username,
+    email:req.body.email,
+    password:req.body.password,
+    cartData:cart,
+  })
+  await user.save();
+
+  const data = {
+    user:{
+      id:user.id
+    }
+  }
+
+  const token = jwt.sign(data,'secret_ecom');
+  res.json({success:true,token})
+
+})
+
+/*Note
+app.post('/signup', async (req, res) => { ... }): Tạo một endpoint POST tại /signup để đăng ký người dùng.
+  let check = await Users.findOne({ email: req.body.email }): Tìm kiếm người dùng trong cơ sở dữ liệu với email được cung cấp.
+    await: Đảm bảo rằng quá trình tìm kiếm hoàn thành trước khi tiếp tục.
+    Users.findOne({ email: req.body.email }): Truy vấn cơ sở dữ liệu để tìm người dùng với email được cung cấp.
+  if (check): Kiểm tra nếu một người dùng với email đó đã tồn tại.
+  return res.status(400).json({ success: false, errors: "Existing user found with same email address" }): Nếu người dùng tồn tại, trả về mã trạng thái 400 và thông báo lỗi.
+------------------------------------
+Tạo giỏ hàng mặc định cho người dùng:
+  let cart = {};: Khởi tạo một đối tượng trống để lưu dữ liệu giỏ hàng.
+  for (let i = 0; i < 300; i++) { cart[i] = 0; }: Tạo một giỏ hàng mặc định với 300 mục, mỗi mục có giá trị là 0.
+-----------------------------------
+Tạo và lưu người dùng mới:
+  const user = new Users({ ... }): Tạo một đối tượng người dùng mới với dữ liệu từ yêu cầu (req.body).
+    name: req.body.username: Tên người dùng.
+    email: req.body.email: Email người dùng.
+    password: req.body.password: Mật khẩu người dùng.
+    cartData: cart: Giỏ hàng mặc định được tạo ở trên.
+  await user.save();: Lưu người dùng mới vào cơ sở dữ liệu.
+--------------------------------------  
+Tạo và trả về token JWT:
+  const data = { user: { id: user.id } }: Tạo dữ liệu để mã hóa trong token, bao gồm ID của người dùng.
+  const token = jwt.sign(data, 'secret_ecom');: Tạo token JWT với dữ liệu người dùng và secret key 'secret_ecom'.
+  res.json({ success: true, token }): Trả về phản hồi JSON với token được tạo và trạng thái thành công.
+*/
+
+//Creating endpoint for user login
+app.post('/login',async (req,res)=>{
+  let user = await Users.findOne({email:req.body.email});
+  if(user){
+    const passCompare = req.body.password === user.password;
+    if(passCompare){
+      const data = {
+        user:{
+          id:user.id
+        }
+      }
+      const token = jwt.sign(data,'secret_ecom');
+      res.json({success:true,token})
+    }
+    else{
+      res.json({success:false,error:"Wrong Password"});
+    }
+  }
+  else{
+    res.json({success:false, error:"Wrong Email ID"});
+  }
+})
 
 app.listen(port,(error)=>{
   if(!error){
