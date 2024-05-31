@@ -1,0 +1,48 @@
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 60px;
+  box-shadow: 0 1px 3px -2px #000;
+  margin-bottom: 1px;
+  background: white;
+}
+/*Note:
+(*) display: flex;
+    Thiết lập thanh điều hướng (navbar) sử dụng mô hình flexbox. Điều này giúp dễ dàng sắp xếp và căn chỉnh các phần tử con bên trong .navbar.
+(*)align-items: center;
+  Căn chỉnh các phần tử con bên trong .navbar theo chiều dọc (trục ngang) sao cho chúng nằm ở giữa.
+(*)justify-content: space-between;
+    Căn chỉnh các phần tử con bên trong .navbar theo chiều ngang (trục dọc) với khoảng cách đều nhau, phần tử đầu tiên và phần tử cuối cùng sẽ được căn sát hai mép của .navbar.
+(*)padding: 15px 60px;
+    Thiết lập khoảng đệm (padding) bên trong .navbar với giá trị 15px cho phần trên và dưới, và 60px cho phần trái và phải. Điều này giúp tạo không gian bên trong .navbar.
+(*)box-shadow: 0 1px 3px -2px #000;
+    Tạo hiệu ứng đổ bóng cho .navbar. Cụ thể:
+      0: Độ lệch ngang (không có lệch ngang).
+      1px: Độ lệch dọc (bóng đổ xuống 1px).
+      3px: Độ mờ của bóng.
+      -2px: Kích thước mở rộng của bóng (âm nghĩa là thu hẹp bóng lại).
+      #000: Màu của bóng là màu đen.
+(*)margin-bottom: 1px;
+    Thiết lập khoảng cách phía dưới .navbar với giá trị 1px. Điều này tạo khoảng trống giữa .navbar và phần tử kế tiếp.
+(*)background: white;
+  Thiết lập màu nền của .navbar là màu trắng.
+*/
+
+.nav-logo{
+  width:200px;
+}
+.nav-profile{
+  width:75px
+}
+@media(max-width:800px){
+  .navbar{
+    padding: 15px 30px;
+  }
+  .nav-logo{
+    width: 150px;
+  }
+  .nav-profile{
+    width: 60px;
+  }
+}
