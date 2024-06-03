@@ -12,6 +12,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "^5.0.1",
+    "sweetalert2": "^11.6.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -45,7 +46,6 @@
     "@babel/core": "^7.24.5",
     "@babel/eslint-parser": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
-    "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "stylelint": "^16.5.0",
     "stylelint-config-standard": "^36.0.0"
