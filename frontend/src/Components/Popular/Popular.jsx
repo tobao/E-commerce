@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './Popular.css'
-// import data_product from '../Assets/data'
+import data_product from '../Assets/data'
 import Item from '../Item/Item'
 
 const Popular = () => {
-  const [popularProducts,setPopularProducts]= useState([]);
+  // const [popularProducts,setPopularProducts]= useState([]);
   ////data_product.map((item,i)
-  useEffect(()=>{
-    fetch('http://localhost:4000/popularinwomen')
-    .then((response)=>response.json())
-    .then((data)=>setPopularProducts(data));
-  },[]);
+  // useEffect(()=>{
+  //   fetch('http://localhost:4000/popularinwomen')
+  //   .then((response)=>response.json())
+  //   .then((data)=>setPopularProducts(data));
+  // },[]);
 
   /*
 useEffect được sử dụng để thực hiện các hiệu ứng phụ, trong trường hợp này là lấy dữ liệu từ một API.
@@ -44,7 +44,7 @@ Code cải thiện:
       <h1>POPULAR IN WOMEN</h1>
       <hr/>
       <div className="popular-item">
-        {popularProducts.map((item,i)=>{
+        {data_product.map((item,i)=>{
           return <Item key={i} 
                        id={item.id} 
                        name={item.name} 
